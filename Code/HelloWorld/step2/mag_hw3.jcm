@@ -1,0 +1,8 @@
+mas mag_hw {
+    agent bob : bob-tell.asl { 
+      goals: say("Hello")
+    }
+    agent alice { // file alice.asl is used
+      beliefs: say("World")
+   }
+}

@@ -1,0 +1,5 @@
+mas sag_hw {
+  agent bob: hwa.asl {
+    goals: say("Hello World")
+  }
+}

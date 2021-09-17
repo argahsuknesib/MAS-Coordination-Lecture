@@ -1,0 +1,26 @@
+mas hello_world {
+
+  agent bob : hwa.asl {
+    focus: workshop.board
+    roles: greeter in ghw
+    beliefs: my_mission(mission1)
+  }
+
+  agent alice : hwa.asl {
+    focus: workshop.board
+    roles: greeter in ghw
+    beliefs: my_mission(mission2)
+  }
+
+  workspace workshop {
+    artifact board : tools.Blackboard
+  }
+
+  organisation greeting : org1.xml {
+    group ghw : gg {
+      responsible-for: shw
+    }
+    scheme shw : hw_choreography
+  }
+
+}

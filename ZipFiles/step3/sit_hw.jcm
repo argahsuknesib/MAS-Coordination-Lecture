@@ -1,0 +1,15 @@
+mas sit_hw {
+  agent bob {
+    join: workshop 
+    goals: say("Hello")
+  }
+
+  agent alice {
+    join:  workshop
+    focus: workshop.board
+  }
+
+  workspace workshop {
+    artifact board: tools.Blackboard
+  }
+}
