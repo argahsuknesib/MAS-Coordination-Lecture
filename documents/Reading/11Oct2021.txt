@@ -1,0 +1,132 @@
+mas hello world{
+    agent bob : hwa.asl{
+        focus : room.board
+        roles : greeter in ghw 
+        beliefs : my_mission(mission1)
+    }
+    agent alice : hwa.asl{
+        focus : room.board
+        roles : greeter in ghw
+        beliefs : my_mission(mission2)
+    }
+    workspace room{
+        artifact board : tools.Blackboard
+    }
+    organisation greeting : org1.xml{
+        group ghw : gg {
+            responsible-for : shw
+        }
+        scheme shw : hw_choreography
+    }
+}
+
+
+permission (bob, _ , committed(bob, mission1, shw), _)
+permission (bob, _, committed(bob, mission2, shw), _)
+
+
+- finished(cake)
+
++!finished(cake)
+
++!finish(cake) : 
+
++finishing(john, cake) :
+
+Contexts employed to handle the events : 
+
++!finished(cake) 
+    : order(cake)[source(Client)] & lifestyle(Client, healthy)
+    <- whip(cream);
+        spread(cream, top);
+        !have(decoration);
+        decorate .
+
+
++!finished(cake)
+    : is_for(cake, wedding)
+    <- !have(marzipan)
+        cover(cake, marzipan)
+        !piping_decorated(cake)
+
+
++finishing(john, cake) <- !assist_finishing(cake)
+
+
+// Test Goal
+
++!finished(cake)
+    : order (cake) [source(Client)]
+    <- ... ;
+        ?phone(Client, Number);
+        ... .
+
++?phone(Client, Number) : ... <- ... .
+
+
+// inference rules
+vegan(Cake) :- has_no_animal_products(Cake) & 
+            not (uses(Cake, Product) & produced_by(Product, Co) &
+                animal_harming(Co)) .
+    
+The agent architecture uses three user defined selection functions.
+The three selection functions are : 
+
+Event ; 
+This chooses one particular event from the event queue to be processed at each
+reasoning cycle. It mainly implements the FIFO policy.
+
+Means ;
+The means selection function chooses one particular plan to be executed when multiple
+different plans are available. 
+
+Intention ;
+Intention selection function chooses one particular intention among the different 
+available ones in the set of functions that are available. Intentions may become
+suspended for various reasons. 
+
+Agent Reasoning Cycle (High Level Description) -->
+The reasoning process can be divided into four main steps.
+
+1. Retriving the part of the agent architecture that is interfacing 
+with the shared environment the current set of available percepts.
+
+Percepts directly impact the agent's beliefs whereas messages can affect
+both the set of beliefs or goals are represented as events placed in an
+event queue.
+
+2. In the part of reasoning, the event selection function is used to select
+one single event. With some relevant plans, we check the context of each plan
+against the current set of the belief base to determine the set of applicable
+plans.
+
+3. Means selection function is called with some set of applicable plans.
+4. Intention selection function selects one particular intention, and the next
+required action of that intention is selected for execution in that reasoning
+cycle. 
+
+
+<-- The Environments Dimension -->
+
+Environment is used as a programming abstraction to model resources and tools that
+an agent can create, share and be able to do their jobs. 
+
+Objective of their work is often represented by some artifact that we incrementaly build,
+possibly cooperatively. It is possible to encapsulate things that are not properly modeled
+as cognitive agents which are neitger autonomous or goal oriented. Examples are a Blackboard
+or a Knowledge Base.
+
+An environment is modeled as a workspace that agents can join to share and work with artifacts.
+The term artifact has been taken activity theory and distributed cognition. Artifact abstraction
+is introduced as a unit to structure and organize the environments. Artifacts are the basic
+building blocks. Artifacts are basic entities to organize the nonautonomous and function
+oriented part of it.
+
+A&A also introduces workspace abstraction in order to structure and organize the overall
+set of artifacts and agents. Workspace is a logical container of artifacts and agents.
+
+A complex MAS is organized as a set of workspaces, distributed among multiple nodes of the network,
+with agents possibly joining multiple workspaces at the same time.
+
+
+

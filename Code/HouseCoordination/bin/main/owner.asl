@@ -10,7 +10,7 @@
 
 /* Initial beliefs and rules */
 
-my_preference("SitePreparation", 2000). // 2000 is the maximum value I can pay for the task
+my_preference("SitePreparation", 2000). //--> default value of 2000 (change if it is not it) // 2000 is the maximum value I can pay for the task
 my_preference("Floors",          1000).
 my_preference("Walls",           1000).
 my_preference("Roof",            2000).
@@ -97,7 +97,7 @@ enough_winners :- number_of_tasks(NS) &
    <- println;
       println("*** Execution Phase ***");
       println("Waiting the `go` from the user");
-      //!!go;  // Commented to stop the execution and waiting for message
+      !!go;  // Commented to stop the execution and waiting for message
       .
 
 +!go <-
