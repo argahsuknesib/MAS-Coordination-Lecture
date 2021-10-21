@@ -43,10 +43,11 @@ my_task("Painting").
       not i_am_winning(Art) &           // I am not the winner
       P < V &                           // I can offer a better bid
       can_commit                        // I can still commit to another task
-   <- //.print("my bid in auction artifact ", Art, ", Task ", S, ", is ", P);
+   <- // .print("my bid in auction artifact ", Art, ", Task ", S, ", is ", P);
       bid( P )[ artifact_id(Art) ].     // place my bid offering a cheaper service
 
 /* plans for execution phase */
+
 
 { include("org_code.asl") }
 { include("skills.asl") }

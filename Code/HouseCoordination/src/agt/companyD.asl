@@ -22,7 +22,7 @@ my_task("Painting").
 +task(S)[artifact_id(Art)]
    <- .wait(math.random(500)+50);
       Bid = math.floor(math.random(10000))+800;
-      //.print("my bid in auction artifact ", Art, " is ",Bid);
+      // .print("my bid in auction artifact ", Art, " is ",Bid);
       bid( Bid )[artifact_id(Art)]. // recall that the artifact ignores if this
                                     // agent places a bid that is higher than
                                     // the current bid
