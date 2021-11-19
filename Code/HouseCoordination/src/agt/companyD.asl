@@ -19,6 +19,9 @@ my_task("Painting").
 // initial goal to discover artifact
 !start.
 
+// my reputation
+my_reputation(0.3).
+
 +task(S)[artifact_id(Art)]
    <- .wait(math.random(500)+50);
       Bid = math.floor(math.random(10000))+800;
@@ -26,6 +29,19 @@ my_task("Painting").
       bid( Bid )[artifact_id(Art)]. // recall that the artifact ignores if this
                                     // agent places a bid that is higher than
                                     // the current bid
+
+/* Sending Tasks to Giacomo Agent for Presentation */
+
++!send_taks : true <-  .send(giacomo, tell, value("SitePreparation"));
+         .send(giacomo, tell, value("Floors"));
+         .send(giacomo, tell, value("Walls"));
+         .send(giacomo, tell, value("WindowsDoors"));
+         .send(giacomo, tell, value("Plumbing"));
+         .send(giacomo, tell, value("ElectricalSystem"));
+         .send(giacomo, tell, value("Painting")).
+
+// this will add the literal value("Example")[source(companyD)] to 
+// the giacomo agent's belief base'
 
 /* plans for execution phase */
 

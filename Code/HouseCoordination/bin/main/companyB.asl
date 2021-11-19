@@ -10,6 +10,9 @@
 my_price(1500). 
 my_task("SitePreparation").
 
+//my reputation
+my_reputation(0.6).
+
 // initial goal to discover artifact
 !start.
 
@@ -18,6 +21,12 @@ my_task("SitePreparation").
       my_price(P) & P < V               // I can offer a better bid
    <- //.print("my bid in auction artifact ", Art, " is ",math.max(V-150,P));
       bid( math.max(V-150,P) ).         // place my bid offering a cheaper service
+
+/* Sending Tasks to Giacomo Agent for Presentation */
+
++!send_tasks : true <- .send(giacomo, tell, value("SitePreparation")).
+
+// this will add the literal value("SitePreparation")[source(companyB)] to giacomo's belief base
 
 /* plans for execution phase */
 

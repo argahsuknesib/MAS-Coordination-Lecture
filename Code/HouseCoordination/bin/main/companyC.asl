@@ -33,6 +33,9 @@ my_task("Plumbing").
 my_task("ElectricalSystem").
 my_task("Painting").
 
+// my reputation
+my_reputation(0.3).
+
 // initial goal to discover artifact
 !start.
 
@@ -48,6 +51,18 @@ my_task("Painting").
 
 /* plans for execution phase */
 
+/* Sending Tasks to Giacomo Agent for Presentation */
++!send_taks : true <- .send(giacomo, tell, value("SitePreparation"));
+      .send(giacomo, tell, value("Floors"));
+      .send(giacomo, tell, value("Walls"));
+      .send(giacomo, tell, value("Roof"));
+      .send(giacomo, tell, value("WindowsDoors"));
+      .send(giacomo, tell, value("Plumbing"));
+      .send(giacomo, tell, value("ElectricalSystem"));
+      .send(giacomo, tell, value("Painting")).
+
+// this will add the literal value("Example")[source(companyC)] to 
+// the giacomo agent's belief base'
 
 { include("org_code.asl") }
 { include("skills.asl") }

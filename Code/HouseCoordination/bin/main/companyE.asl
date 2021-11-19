@@ -13,6 +13,10 @@ my_task("Floors").
 my_task("Walls").
 my_task("Roof").
 
+// my reputation
+my_reputation(0.8).
+
+
 // a rule to calculate the sum of the current bids place by this agent
 sum_of_my_offers(S) :-
    .my_name(Me) & .term2string(Me,MeS) &
@@ -35,6 +39,18 @@ sum_of_my_offers(S) :-
       P < Sum + V                     // I can still offer a better bid
    <- //.print("my bid in auction artifact ", Art, ", Task ", S,", is ",math.max(V-10,P));
       bid( math.max(V-10,P) )[ artifact_id(Art) ].  // place my bid offering a cheaper service
+
+
+/* Sending Tasks to Giacomo Agent for Presentation */
+
++!send_taks : true <- .send(giacomo, tell, value("Floors"));
+         .send(giacomo, tell, value("Walls"));
+         .send(giacomo, tell, value("Roof")).
+
+/*
+this will add the literal value("Example)[source(companyE)]
+to the giacomo agent's beief base 
+*/
 
 /* plans for execution phase */
 

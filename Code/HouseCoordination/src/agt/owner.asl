@@ -82,14 +82,62 @@ enough_winners :- number_of_tasks(NS) &
 +!wait_for_bids
    <- println("Waiting bids for 5 seconds...");
       .wait(5000); // use an internal deadline of 5 seconds to close the auctions
+      !presentation_phase;
+      println("Waiting for the agent to choose ....");
+      .wait(5000);
       !show_winners.
 
+// Plan for getting name of all the agent able to execute the task
+
++!presentation_phase 
+      <- println("Finding different companies with tasks");
+      .findall(X, source(X), Tasks);
+      /* this will unify the task given in the value("Plumbing")[source(companyA)]
+      to the Tasks 
+      */
+      for (value(X)[source(companyX)]){
+         .concat(TaskX, TaskY, FinalTaskList);
+      }
+      !check_if_member;
+      .wait(5000);
+      !send_value_to_company.
+
++!send_value_to_company : true
+      <-
+      .send(companyA, tell, value(X));
+      .send(companyB, tell, value(X));
+      .send(companyC, tell, value(X));
+      .send(companyD, tell, value(X));
+      .send(companyE, tell, value(X)).
+
+
++!check_if_member
+      <- for (value(X)[source(companyX)]){
+         .member(TaskX, [FinalTaskList]);
+         .println("As the Task with Source is present in final list it will be sent to the giacomo agent");
+      }.
+
 +!show_winners
-   <- for ( currentWinner(Ag)[artifact_id(ArtId)] ) {
+   <- for (currentWinner(Ag)[artifact_id(ArtId)] ) {
          ?currentBid(Price)[artifact_id(ArtId)]; // check the current bid
          ?task(Task)[artifact_id(ArtId)];          // and the task it is for
-         println("Winner of task ", Task," is ", Ag, " for ", Price)
+         println("Winner of task ", Task," is ", Ag, " for ", Price);
       }.
+
+
+/* 
+Plan To Use Reputation 
+The reputation is defined a value out of 1, in decimals
+as a belief in each company and then added to the AuctionArt
+to update when the better reputation comes to bid. 
+*/
+
++!use_reputation 
+   <- for (reputation(Ag)[artifact_id(ArtId)] ) {
+      ?reputation(Price)[artifact_id(ArtId)];
+      ?task(Task)[artifact_id(ArtId)];
+      println("The reputation for task is, " Task, "with reputation ", Price);
+   }
 
 /* Plans for managing the execution of the house construction */
 
