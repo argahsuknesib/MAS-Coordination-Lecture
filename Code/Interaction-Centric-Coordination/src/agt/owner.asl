@@ -97,7 +97,7 @@ enough_winners :- number_of_tasks(NS) &
    <- println;
       println("*** Execution Phase ***");
       println("Waiting the `go` from the user");
-      //!!go;  // Commented to stop the execution and waiting for message
+      !!go;  // Commented to stop the execution and waiting for message
       .
 
 +!go <-
