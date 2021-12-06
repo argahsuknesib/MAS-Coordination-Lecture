@@ -16,13 +16,13 @@ simulator/Floor.java
  simulator.Floor
 simulator/Windows.java
  simulator.Windows
-simulator/Site.java
- simulator.Site
 simulator/House.java
  simulator.House
  simulator.House$HousePanel
  simulator.House$HouseView
 simulator/Plumbing.java
  simulator.Plumbing
+simulator/Site.java
+ simulator.Site
 simulator/HousePart.java
  simulator.HousePart

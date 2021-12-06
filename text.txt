@@ -1,1 +1,4 @@
 Hello, this is random commit to check.
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"

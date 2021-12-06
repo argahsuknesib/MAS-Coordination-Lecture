@@ -13,13 +13,29 @@
 \subsection{Questions}
 
 \subsubsection{What are the hidden hypothesis of coordination by messages like in this scenario?}
+In the previous section of the lecture, we studied agent-dimension based coordination. By coordinating using 
+messages,  
 \subsubsection{Discuss the pros and cons of this approach versus the agent-centric coordination approach.}
 \subsubsection{What is missing in the description of coordination by messages? Why?}
 
 \subsection{Management of delay for performing a task}
 
 \subsubsection{Deduce the semantic of the performatives tell, achieve, and askOne, and define when they should be used.}
+After carrying out Q3, when you use the 'tell' method, the sender will make that the receiver will add the content 
+of the message sent into it's belief base. For example, after sending \emph{.send(giacomo, tell, delay(plumbing,10)).}, when
+you go to the Jason HTTP server, you find the giacomo agent having a belief base added with it's source \emph{delay(plumbing,10)[source(agenttest)].}
 
+In Q4, we use the 'achieve' method, where the receiver agent will add the content of the message as a goal \emph{'to acheive'}.
+After carrying out the \emph{.send(giacomo, achieve, updateTolerance(10)).} message in agenttest REPL agent, the goal
+\emph{!updateTolerance(10)[source(agenttest)]} will be added. Moreover, as there is no existing plan to achieve this goal, 
+we will have a message for the same in our giacomo console.
+
+In Q5, when we use the 'askOne' method, the sender agent wishes to know and confirm if there is something like that is present
+in the receiver agent's belief base by specifying the method and arguments. After carrying out, \emph{send(giacomo, askOne, penalty(X,Y)).} we 
+wish to know the penalty method of the receiver agent if there is one. In response, we get \emph{penalty(plumbing,50)[source(giacomo)].}
+in the agenttest's belief base.
+
+Thus, we can conclude that the semantics of the performatives for the methods are completely different.
 \section{Protocol Definition}
 
 \subsection{Questions}
