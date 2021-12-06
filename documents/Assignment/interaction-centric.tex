@@ -13,11 +13,15 @@
 \subsection{Questions}
 
 \subsubsection{What are the hidden hypothesis of coordination by messages like in this scenario?}
-In the previous section of the lecture, we studied agent-dimension based coordination. By coordinating using 
-messages,  
+In the previous section of the lecture, we studied agent-dimension based coordination. Here, the messages are 
+sent by the agents between themselves. There is no 'main/master' agent to decide the skill/work to be distributed
+Instead, the agents can communicate between themselves to reach goals. 
 \subsubsection{Discuss the pros and cons of this approach versus the agent-centric coordination approach.}
+A good thing is that the agent is much more intelligent and independent as it can decide where/how to work
+on the basis of the communication-coordination between the other agents. Although, there is no defined protocol on how
+to communicate between.
 \subsubsection{What is missing in the description of coordination by messages? Why?}
-
+An implementation of a common predecided protocol to coordinate the communication between agents is missing. 
 \subsection{Management of delay for performing a task}
 
 \subsubsection{Deduce the semantic of the performatives tell, achieve, and askOne, and define when they should be used.}
@@ -40,6 +44,10 @@ Thus, we can conclude that the semantics of the performatives for the methods ar
 
 \subsection{Questions}
 \subsubsection{What are the pros and cons of coordination with protocol?}
+It is good that any external agent can join the multi agent system if they were
+following the same protocol. You can add a lot of agents without making the system complicated as there is no main agent like agent-centric. 
+It can be considered as a bittorrent network of agents who are following a particular torrent protocol. A con can be that there is no multithreading 
+in between the agents while communicating. A particular agent can not communicate with different agents at the instance.
 
 
 \end{document}
