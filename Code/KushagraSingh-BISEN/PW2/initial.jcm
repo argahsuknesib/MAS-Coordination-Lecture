@@ -1,0 +1,34 @@
+// mas house_building{
+//     agent giacomo : clientQ1a.asl{
+//         // focus : site.housegui
+//     }
+
+//     agent andrei : clientQ1b.asl{
+//         // focus : site.housegui
+//     }
+
+//     agent companyA : companyQ1.asl {
+//         // focus  : site.housegui
+//     }
+
+//     // workspace site {
+//     //     // artifact housegui : simulator.House
+//     // }
+// }
+
+/*
+
+Uncomment one of the parts for 3.2 and 4.2 
+practical work to be done.
+
+*/
+
+
+mas house_building{
+    agent giacomo : clientQ2.asl{
+
+    }
+    agent companyA : companyQ2.asl{
+        
+    }
+}
